@@ -1,42 +1,48 @@
 import json
 import datetime
-from comercio_eletronico import Cliente, Categoria, Produto, Venda, VendaItem
+from Tarefa1 import Cliente, Categoria, Produto, Venda, VendaItem
+
+# As classes DAO(Data Object Acess) são responsáveis por persistir os dados. 
+# Cada uma mantendo uma lista estática dos objetos do modelo
 
 
-# ─────────────────────────────────────────
 # ClienteDAO
-# ─────────────────────────────────────────
+
 class ClienteDAO:
     objetos: list = []
 
     @classmethod
-    def Inserir(cls, obj: Cliente) -> None:
+    def Inserir(cls, obj: Cliente) -> None: # O método inserir adiciona um objeto à lista
         cls.objetos.append(obj)
 
     @classmethod
-    def Listar(cls) -> list:
+    def Listar(cls) -> list: # Listar retorna todos os objetos da lista
         return cls.objetos
 
     @classmethod
-    def Listar_Id(cls, id: int) -> Cliente:
+    def Listar_Id(cls, id: int) -> Cliente: # Listar_ID busca um objeto especifico
         for obj in cls.objetos:
             if obj.get_id() == id:
                 return obj
         return None
 
     @classmethod
-    def Atualizar(cls, obj: Cliente) -> None:
+    def Atualizar(cls, obj: Cliente) -> None: # Atualizar serve para substituir um objeto na lista
         for i, c in enumerate(cls.objetos):
             if c.get_id() == obj.get_id():
                 cls.objetos[i] = obj
                 return
 
     @classmethod
-    def Excluir(cls, obj: Cliente) -> None:
+    def Excluir(cls, obj: Cliente) -> None: # Excluir remove um objeto da lista
         cls.objetos = [c for c in cls.objetos if c.get_id() != obj.get_id()]
 
+# Os métodos salvar e abrir abaixo, gravam e leem essa lista em um arquivo Json
+# Isso serve para garantir a proteção dos dados quando o arquivo fechar
+# Json é um arquivo de texto simples, utilizado para estruturar e transportar informações
+
     @classmethod
-    def Abrir(cls) -> None:
+    def Abrir(cls) -> None: 
         try:
             with open("clientes.json", "r", encoding="utf-8") as f:
                 dados = json.load(f)

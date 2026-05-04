@@ -1,11 +1,14 @@
-from comercio_eletronico import Cliente, Categoria, Produto
-from dao import ClienteDAO, CategoriaDAO, ProdutoDAO
+from Tarefa1 import Cliente, Categoria, Produto
+from Tarefa2 import ClienteDAO, CategoriaDAO, ProdutoDAO
+
+# A classe UI é a  interface com o usuário
+
 
 
 class UI:
 
     @staticmethod
-    def Main() -> None:
+    def Main() -> None: # O método Main fica em loop até o usuário querer sair
         # Carrega dados salvos ao iniciar
         ClienteDAO.Abrir()
         CategoriaDAO.Abrir()
@@ -53,8 +56,10 @@ class UI:
                 print("\nDados salvos. Encerrando o sistema. Até logo!")
                 break
 
+# O método Menu exibe as opções e retoma a escolha validada
+# O Menu valida a entrada aceitando números entre 0 e 12, se a entrada for inválida, ele pede novamente
     @staticmethod
-    def Menu() -> int:
+    def Menu() -> int: 
         print("\n" + "=" * 40)
         print("   SISTEMA DE COMÉRCIO ELETRÔNICO")
         print("=" * 40)
@@ -78,7 +83,7 @@ class UI:
         print("=" * 40)
 
         while True:
-            try:
+            try: # Para tratar erros de entrada, coloquei o try e o expect
                 opcao = int(input("Escolha uma opção: "))
                 if 0 <= opcao <= 12:
                     return opcao
@@ -298,6 +303,10 @@ class UI:
                 print("Exclusão cancelada.")
         except ValueError:
             print("Erro: entrada inválida.")
+
+# Para cada entidade — Cliente, Categoria e Produto 
+# há quatro métodos: Listar, Inserir, Atualizar e Excluir
+# Ao iniciar, o sistema carrega os dados dos arquivos JSON, e ao sair, salva tudo automaticamente
 
 
 # ─────────────────────────────────────────

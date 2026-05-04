@@ -1,12 +1,18 @@
 import datetime
 
+# Projeto de sistema eletrônico feito em python, dividido em 3 partes - Parte 1
 
-class Cliente:
-    def __init__(self, id: int, n: str, e: str, f: str):
-        self.__id = id
+# Na primeira parte, eu começo definindo as classes
+
+class Cliente: # a classe cliente tem como atributos, id, nome, email e fone e é encapsulada
+    def __init__(self, id: int, n: str, e: str, f: str): # método construtor
+        self.__id = id #
         self.__nome = n
         self.__email = e
         self.__fone = f
+
+# Para poder modificar os atributos, eu criei os métodos getters e setters
+# Além disso, foi implementado o ToString
 
     # Getters
     def get_id(self):
@@ -31,7 +37,7 @@ class Cliente:
     def set_fone(self, fone: str):
         self.__fone = fone
 
-    def __str__(self):
+    def __str__(self): # Método ToString, que retorna uma apresentação em texto do objeto após o print()
         return (f"Cliente[id={self.__id}, nome={self.__nome}, "
                 f"email={self.__email}, fone={self.__fone}]")
 
@@ -142,7 +148,7 @@ class Venda:
 
 
 class VendaItem:
-    def __init__(self, id: int, q: int, p: double if False else float):
+    def __init__(self, id: int, q: int, p: float):
         self.__id = id
         self.__qtd = q
         self.__preco = p
