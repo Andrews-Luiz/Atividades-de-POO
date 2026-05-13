@@ -207,20 +207,21 @@ class Sistema:
         for produto in self.banco.produtos.values():
             print(produto)
     def buscar_produto_por_nome(self):
-       nome = input("Digite o nome do produto: ").strip().lower()
+        nome = input("Digite o nome do produto: ").strip().lower()
 
-       encontrados = []
-       for produto in self.banco.produtos.values():
-        if nome in produto.nome.lower():
-            encontrados.append(produto)
+        encontrados = []
+        for produto in self.banco.produtos.values():
+            nome_produto = produto.nome.lower()
+            if nome in nome_produto:
+                encontrados.append(produto)
 
         if len(encontrados) == 0:
-          print("Nenhum produto encontrado.")
-          return
+            print("Nenhum produto encontrado.")
+            return
 
         print("\nProdutos encontrados:")
         for produto in encontrados:
-           print(produto)
+            print(produto)
 
     def inserir_no_carrinho(self):
         self.listar_produtos()
