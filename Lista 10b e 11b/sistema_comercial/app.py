@@ -214,14 +214,14 @@ def visualizar_carrinho(cliente):
         itens = [
             {
                 "Produto": item.produto.nome,
-                "Preco Unitario": f"R${item.produto.preco:.2f}",
+                "Preco Unitario": f"R${item.produto.preco_com_desconto():.2f}",
                 "Quantidade": item.quantidade,
-                "Total": f"R${item.produto.preco * item.quantidade:.2f}"
+                "Total": f"R${item.produto.preco_com_desconto() * item.quantidade:.2f}"
             }
             for item in cliente.carrinho
         ]
         st.dataframe(itens)
-        total = sum(item.produto.preco * item.quantidade for item in cliente.carrinho)
+        total = sum(item.produto.preco_com_desconto() * item.quantidade for item in cliente.carrinho)
         st.write(f"**Total geral: R${total:.2f}**")
 
     except ErroValidacao as e:
@@ -234,6 +234,35 @@ def comprar_carrinho(cliente):
             st.info("Carrinho vazio.")
             return
 
+        visualizar_carrinho(cliente)
+
+        if st.button("Confirmar Compra"):
+            for item in cliente.carrinho:
+                produto = banco.produtos.get(item.produto.id)
+                if item.quantidade > produto.quantidade:
+                    raise ErroEstoqueInsuficiente(
+                        f"Estoque insuficiente para {produto.nome}. Disponivel: {produto.quantidade}"
+                    )
+
+            for item in cliente.carrinho:
+                produto = banco.produtos.get(item.produto.id)
+                produto.quantidade -= item.quantidade
+
+            id_venda = banco.proximo_id_venda()
+            total_com_desconto = sum(
+                item.produto.preco_com_desconto() * item.quantidade
+                for item in cliente.carrinho
+            )
+            nova_venda = Venda(id_venda, cliente, list(cliente.carrinho))
+            banco.vendas.append(nova_venda)
+            cliente.compras.append(nova_venda)
+            cliente.carrinho = []
+            st.success(f"Compra realizada! Total: R${total_com_desconto:.2f}")
+
+    except ErroEstoqueInsuficiente as e:
+        st.error(f"Erro no estoque: {str(e)}")
+    except ErroValidacao as e:
+        st.error(str(e))
         visualizar_carrinho(cliente)
 
         if st.button("Confirmar Compra"):
