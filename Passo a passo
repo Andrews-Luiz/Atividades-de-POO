@@ -3,4 +3,4 @@ cd 'Lista 10b e 11b/sistema_comercial'
 2 — Instalar o Streamlit (só na primeira vez):
 pip install streamlit
 3 — Rodar a aplicação:
-streamlit run app.py
+  streamlit run app.py
