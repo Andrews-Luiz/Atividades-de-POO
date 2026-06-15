@@ -12,6 +12,8 @@ class Banco:
         self.categorias = {}
         self.produtos = {}
         self.vendas = []
+        self.entregas = {}
+        self._proximo_id_entrega = 1
 
         self._proximo_id_categoria = 1
         self._proximo_id_produto = 1
@@ -30,4 +32,9 @@ class Banco:
     def proximo_id_venda(self):
         id_atual = self._proximo_id_venda
         self._proximo_id_venda += 1
+        return id_atual
+    
+    def proximo_id_entrega(self):
+        id_atual = self._proximo_id_entrega
+        self._proximo_id_entrega += 1
         return id_atual

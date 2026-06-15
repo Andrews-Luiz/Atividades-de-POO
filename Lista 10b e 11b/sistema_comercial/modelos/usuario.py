@@ -42,3 +42,12 @@ class Admin(Usuario):
 
     def __str__(self):
         return f"[Admin] {self.nome} | Login: {self.login} | Email: {self.email}"
+    
+class Entregador(Usuario):
+    def __init__(self, login, senha, nome, email, telefone, veiculo):
+        super().__init__(login, senha, nome, email, telefone)
+        self.veiculo = veiculo
+        self.entregas = []
+
+    def __str__(self):
+        return f"[Entregador] {self.nome} | Veiculo: {self.veiculo}"
