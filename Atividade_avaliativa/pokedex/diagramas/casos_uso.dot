@@ -1,0 +1,66 @@
+digraph CasosDeUso {
+    rankdir=LR;
+    fontname="Helvetica";
+    labelloc="t";
+    label="Diagrama de Casos de Uso - Sistema de Gerenciamento Pokémon";
+    fontsize=18;
+
+    node [fontname="Helvetica"];
+
+    Admin2 [shape=none, label=<
+      <TABLE BORDER="0" CELLBORDER="0">
+        <TR><TD><FONT POINT-SIZE="28">&#9787;</FONT></TD></TR>
+        <TR><TD>Administrador</TD></TR>
+      </TABLE>
+    >];
+    Treinador2 [shape=none, label=<
+      <TABLE BORDER="0" CELLBORDER="0">
+        <TR><TD><FONT POINT-SIZE="28">&#9787;</FONT></TD></TR>
+        <TR><TD>Treinador</TD></TR>
+      </TABLE>
+    >];
+
+    subgraph cluster_sistema {
+        label="Sistema de Gerenciamento Pokémon";
+        style=rounded;
+        fontsize=14;
+        node [shape=ellipse, style=filled, fillcolor="#EAF2FB", fontsize=11, width=2.3];
+
+        UC_Login [label="Entrar no sistema"];
+        UC_Logout [label="Sair do sistema"];
+
+        UC_CadUsuario [label="Cadastrar / Listar /\nAtualizar / Excluir Usuário"];
+        UC_CadTipo [label="Cadastrar / Listar /\nAtualizar / Excluir Tipo"];
+        UC_CadHabitat [label="Cadastrar / Listar /\nAtualizar / Excluir Habitat"];
+        UC_CadRegiao [label="Cadastrar / Listar /\nAtualizar / Excluir Região"];
+        UC_CadPokemon [label="Cadastrar / Listar /\nAtualizar / Excluir Pokémon"];
+
+        UC_VincularPokemon [label="Vincular Pokémon a\nTipo / Habitat / Região"];
+        UC_PesquisarPokemon [label="Pesquisar Pokémon\n(por nome parcial)"];
+        UC_PesquisarUsuario [label="Pesquisar Usuário\n(por nome parcial)"];
+
+        UC_CapturarPokemon [label="Capturar Pokémon\n(regra de negócio)"];
+        UC_LibertarPokemon [label="Registrar Libertação\n(regra de negócio)"];
+        UC_ListarMinhaEquipe [label="Listar Minha Equipe\n(capturas do treinador)"];
+        UC_ListarTodasCapturas [label="Listar Todas\nas Capturas"];
+    }
+
+    Admin2 -> UC_Login;
+    Admin2 -> UC_Logout;
+    Admin2 -> UC_CadUsuario;
+    Admin2 -> UC_CadTipo;
+    Admin2 -> UC_CadHabitat;
+    Admin2 -> UC_CadRegiao;
+    Admin2 -> UC_CadPokemon;
+    Admin2 -> UC_VincularPokemon;
+    Admin2 -> UC_PesquisarPokemon;
+    Admin2 -> UC_PesquisarUsuario;
+    Admin2 -> UC_ListarTodasCapturas;
+    Admin2 -> UC_LibertarPokemon;
+
+    Treinador2 -> UC_Login;
+    Treinador2 -> UC_Logout;
+    Treinador2 -> UC_PesquisarPokemon;
+    Treinador2 -> UC_CapturarPokemon;
+    Treinador2 -> UC_ListarMinhaEquipe;
+}
