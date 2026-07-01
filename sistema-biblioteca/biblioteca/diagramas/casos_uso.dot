@@ -1,0 +1,70 @@
+digraph CasosDeUso {
+    rankdir=LR;
+    fontname="Helvetica";
+    labelloc="t";
+    label="Diagrama de Casos de Uso - Sistema de Gerenciamento de Biblioteca";
+    fontsize=18;
+
+    node [fontname="Helvetica"];
+
+    Admin2 [shape=none, label=<
+      <TABLE BORDER="0" CELLBORDER="0">
+        <TR><TD><FONT POINT-SIZE="28">&#9787;</FONT></TD></TR>
+        <TR><TD>Administrador</TD></TR>
+      </TABLE>
+    >];
+    Leitor2 [shape=none, label=<
+      <TABLE BORDER="0" CELLBORDER="0">
+        <TR><TD><FONT POINT-SIZE="28">&#9787;</FONT></TD></TR>
+        <TR><TD>Leitor</TD></TR>
+      </TABLE>
+    >];
+
+    subgraph cluster_sistema {
+        label="Sistema de Gerenciamento de Biblioteca";
+        style=rounded;
+        fontsize=14;
+        node [shape=ellipse, style=filled, fillcolor="#EAF2FB", fontsize=11, width=2.3];
+
+        UC_Login [label="Entrar no sistema"];
+        UC_Logout [label="Sair do sistema"];
+
+        UC_CadUsuario [label="Cadastrar / Listar /\nAtualizar / Excluir Usuário"];
+        UC_CadCategoria [label="Cadastrar / Listar /\nAtualizar / Excluir Categoria"];
+        UC_CadAutor [label="Cadastrar / Listar /\nAtualizar / Excluir Autor"];
+        UC_CadEditora [label="Cadastrar / Listar /\nAtualizar / Excluir Editora"];
+        UC_CadLivro [label="Cadastrar / Listar /\nAtualizar / Excluir Livro"];
+
+        UC_VincularLivro [label="Vincular Livro a\nCategoria / Autor / Editora"];
+        UC_PesquisarLivro [label="Pesquisar Livro\n(por título parcial)"];
+        UC_PesquisarUsuario [label="Pesquisar Usuário\n(por nome parcial)"];
+        UC_PesquisarAutor [label="Pesquisar Autor\n(por nome parcial)"];
+        UC_PesquisarEditora [label="Pesquisar Editora\n(por nome parcial)"];
+
+        UC_RealizarEmprestimo [label="Realizar Empréstimo\n(regra de negócio)"];
+        UC_RegistrarDevolucao [label="Registrar Devolução\n(regra de negócio)"];
+        UC_ListarEmprestimos [label="Listar Empréstimos\ndo Leitor"];
+        UC_ListarTodosEmprestimos [label="Listar Todos\nos Empréstimos"];
+    }
+
+    Admin2 -> UC_Login;
+    Admin2 -> UC_Logout;
+    Admin2 -> UC_CadUsuario;
+    Admin2 -> UC_CadCategoria;
+    Admin2 -> UC_CadAutor;
+    Admin2 -> UC_CadEditora;
+    Admin2 -> UC_CadLivro;
+    Admin2 -> UC_VincularLivro;
+    Admin2 -> UC_PesquisarLivro;
+    Admin2 -> UC_PesquisarUsuario;
+    Admin2 -> UC_PesquisarAutor;
+    Admin2 -> UC_PesquisarEditora;
+    Admin2 -> UC_ListarTodosEmprestimos;
+    Admin2 -> UC_RegistrarDevolucao;
+
+    Leitor2 -> UC_Login;
+    Leitor2 -> UC_Logout;
+    Leitor2 -> UC_PesquisarLivro;
+    Leitor2 -> UC_RealizarEmprestimo;
+    Leitor2 -> UC_ListarEmprestimos;
+}

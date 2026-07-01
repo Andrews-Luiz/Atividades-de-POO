@@ -1,0 +1,57 @@
+digraph Classes {
+    rankdir=TB;
+    fontname="Helvetica";
+    labelloc="t";
+    label="Diagrama de Classes - Modelo e Persistência - Sistema de Biblioteca (Dupla - 6 entidades)";
+    fontsize=16;
+    node [shape=record, fontname="Helvetica", fontsize=10];
+    edge [fontname="Helvetica", fontsize=9];
+
+    Usuario [label="{Usuario|+ id: int\l+ nome: str\l+ email: str\l+ senha: str\l+ perfil: str  // \"admin\" ou \"leitor\"\l|+ __init__(nome, email, senha, perfil)\l+ to_dict(): dict\l+ from_dict(dict): Usuario\l}"];
+
+    Categoria [label="{Categoria|+ id: int\l+ nome: str\l+ descricao: str\l|+ __init__(nome, descricao)\l+ to_dict(): dict\l+ from_dict(dict): Categoria\l}"];
+
+    Autor [label="{Autor|+ id: int\l+ nome: str\l+ nacionalidade: str\l|+ __init__(nome, nacionalidade)\l+ to_dict(): dict\l+ from_dict(dict): Autor\l}"];
+
+    Editora [label="{Editora|+ id: int\l+ nome: str\l+ cidade: str\l|+ __init__(nome, cidade)\l+ to_dict(): dict\l+ from_dict(dict): Editora\l}"];
+
+    Livro [label="{Livro|+ id: int\l+ titulo: str\l+ isbn: str\l+ categoria_id: int\l+ autor_id: int\l+ editora_id: int\l+ qtd_total: int\l+ qtd_disponivel: int\l|+ __init__(titulo, isbn, categoria_id,\l    autor_id, editora_id, qtd_total)\l+ to_dict(): dict\l+ from_dict(dict): Livro\l}"];
+
+    Emprestimo [label="{Emprestimo|+ id: int\l+ livro_id: int\l+ usuario_id: int\l+ data_emprestimo: str\l+ data_devolucao_prevista: str\l+ data_devolucao_real: str\l+ status: str  // \"ATIVO\" / \"DEVOLVIDO\"\l|+ __init__(livro_id, usuario_id,\l    data_emprestimo, data_devolucao_prevista)\l+ to_dict(): dict\l+ from_dict(dict): Emprestimo\l}"];
+
+    // Associações de modelo (1..N)
+    Categoria -> Livro [arrowhead=none, dir=none, label="1        possui        N"];
+    Autor -> Livro [arrowhead=none, dir=none, label="1        escreve        N"];
+    Editora -> Livro [arrowhead=none, dir=none, label="1        publica        N"];
+    Livro -> Emprestimo [arrowhead=none, dir=none, label="1        gera        N"];
+    Usuario -> Emprestimo [arrowhead=none, dir=none, label="1        realiza        N"];
+
+    subgraph cluster_persistencia {
+        label="Camada de Persistência (JSON)";
+        style=dashed;
+        fontsize=12;
+
+        RepositorioBase [label="{RepositorioBase (genérico)|+ arquivo: str\l|+ salvar_todos(lista: list): void\l+ carregar_todos(): list\l+ proximo_id(): int\l}"];
+
+        UsuarioRepositorio [label="{UsuarioRepositorio|+ arquivo = \"usuarios.json\"\l|+ inserir/listar/buscar_por_id\l+ atualizar/excluir\l+ pesquisar_por_nome(termo): list\l}"];
+        CategoriaRepositorio [label="{CategoriaRepositorio|+ arquivo = \"categorias.json\"\l|+ inserir/listar/buscar_por_id\l+ atualizar/excluir\l}"];
+        AutorRepositorio [label="{AutorRepositorio|+ arquivo = \"autores.json\"\l|+ inserir/listar/buscar_por_id\l+ atualizar/excluir\l+ pesquisar_por_nome(termo): list\l}"];
+        EditoraRepositorio [label="{EditoraRepositorio|+ arquivo = \"editoras.json\"\l|+ inserir/listar/buscar_por_id\l+ atualizar/excluir\l+ pesquisar_por_nome(termo): list\l}"];
+        LivroRepositorio [label="{LivroRepositorio|+ arquivo = \"livros.json\"\l|+ inserir/listar/buscar_por_id\l+ atualizar/excluir\l+ pesquisar_por_titulo(termo): list\l}"];
+        EmprestimoRepositorio [label="{EmprestimoRepositorio|+ arquivo = \"emprestimos.json\"\l|+ inserir/listar/buscar_por_id\l+ atualizar/excluir\l+ listar_por_usuario(usuario_id): list\l}"];
+
+        RepositorioBase -> UsuarioRepositorio [arrowhead=empty, label="herda"];
+        RepositorioBase -> CategoriaRepositorio [arrowhead=empty, label="herda"];
+        RepositorioBase -> AutorRepositorio [arrowhead=empty, label="herda"];
+        RepositorioBase -> EditoraRepositorio [arrowhead=empty, label="herda"];
+        RepositorioBase -> LivroRepositorio [arrowhead=empty, label="herda"];
+        RepositorioBase -> EmprestimoRepositorio [arrowhead=empty, label="herda"];
+    }
+
+    UsuarioRepositorio -> Usuario [style=dotted, arrowhead=vee, label="persiste"];
+    CategoriaRepositorio -> Categoria [style=dotted, arrowhead=vee, label="persiste"];
+    AutorRepositorio -> Autor [style=dotted, arrowhead=vee, label="persiste"];
+    EditoraRepositorio -> Editora [style=dotted, arrowhead=vee, label="persiste"];
+    LivroRepositorio -> Livro [style=dotted, arrowhead=vee, label="persiste"];
+    EmprestimoRepositorio -> Emprestimo [style=dotted, arrowhead=vee, label="persiste"];
+}
