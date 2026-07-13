@@ -1,0 +1,57 @@
+digraph Classes {
+    rankdir=TB;
+    fontname="Helvetica";
+    labelloc="t";
+    label="Diagrama de Classes - Modelo e Persistência - Sistema de Gerenciamento Pokémon (Dupla - 6 entidades)";
+    fontsize=16;
+    node [shape=record, fontname="Helvetica", fontsize=10];
+    edge [fontname="Helvetica", fontsize=9];
+
+    Usuario [label="{Usuario|+ id: int\l+ nome: str\l+ email: str\l+ senha: str\l+ perfil: str  // \"admin\" ou \"treinador\"\l|+ __init__(nome, email, senha, perfil)\l+ to_dict(): dict\l+ from_dict(dict): Usuario\l}"];
+
+    Tipo [label="{Tipo|+ id: int\l+ nome: str\l+ descricao: str\l|+ __init__(nome, descricao)\l+ to_dict(): dict\l+ from_dict(dict): Tipo\l}"];
+
+    Habitat [label="{Habitat|+ id: int\l+ nome: str\l+ descricao: str\l|+ __init__(nome, descricao)\l+ to_dict(): dict\l+ from_dict(dict): Habitat\l}"];
+
+    Regiao [label="{Regiao|+ id: int\l+ nome: str\l+ descricao: str\l|+ __init__(nome, descricao)\l+ to_dict(): dict\l+ from_dict(dict): Regiao\l}"];
+
+    Pokemon [label="{Pokemon|+ id: int\l+ nome: str\l+ numero_pokedex: int\l+ tipo_id: int\l+ habitat_id: int\l+ regiao_id: int\l+ hp_base: int\l+ qtd_avistados: int\l+ qtd_disponivel: int\l|+ __init__(nome, numero_pokedex, tipo_id,\l    habitat_id, regiao_id, hp_base, qtd_avistados)\l+ to_dict(): dict\l+ from_dict(dict): Pokemon\l}"];
+
+    Captura [label="{Captura|+ id: int\l+ pokemon_id: int\l+ treinador_id: int\l+ apelido: str\l+ data_captura: str\l+ data_libertacao: str\l+ status: str  // \"ATIVO\" / \"LIBERTADO\"\l|+ __init__(pokemon_id, treinador_id, apelido,\l    data_captura)\l+ to_dict(): dict\l+ from_dict(dict): Captura\l}"];
+
+    // Associações de modelo (1..N)
+    Tipo -> Pokemon [arrowhead=none, dir=none, label="1        classifica        N"];
+    Habitat -> Pokemon [arrowhead=none, dir=none, label="1        abriga        N"];
+    Regiao -> Pokemon [arrowhead=none, dir=none, label="1        origina        N"];
+    Pokemon -> Captura [arrowhead=none, dir=none, label="1        é alvo de        N"];
+    Usuario -> Captura [arrowhead=none, dir=none, label="1        realiza        N"];
+
+    subgraph cluster_persistencia {
+        label="Camada de Persistência (JSON)";
+        style=dashed;
+        fontsize=12;
+
+        RepositorioBase [label="{RepositorioBase (genérico)|+ arquivo: str\l|+ salvar_todos(lista: list): void\l+ carregar_todos(): list\l+ proximo_id(): int\l}"];
+
+        UsuarioRepositorio [label="{UsuarioRepositorio|+ arquivo = \"usuarios.json\"\l|+ inserir/listar/buscar_por_id\l+ atualizar/excluir\l+ pesquisar_por_nome(termo): list\l}"];
+        TipoRepositorio [label="{TipoRepositorio|+ arquivo = \"tipos.json\"\l|+ inserir/listar/buscar_por_id\l+ atualizar/excluir\l+ pesquisar_por_nome(termo): list\l}"];
+        HabitatRepositorio [label="{HabitatRepositorio|+ arquivo = \"habitats.json\"\l|+ inserir/listar/buscar_por_id\l+ atualizar/excluir\l+ pesquisar_por_nome(termo): list\l}"];
+        RegiaoRepositorio [label="{RegiaoRepositorio|+ arquivo = \"regioes.json\"\l|+ inserir/listar/buscar_por_id\l+ atualizar/excluir\l+ pesquisar_por_nome(termo): list\l}"];
+        PokemonRepositorio [label="{PokemonRepositorio|+ arquivo = \"pokemons.json\"\l|+ inserir/listar/buscar_por_id\l+ atualizar/excluir\l+ pesquisar_por_nome(termo): list\l}"];
+        CapturaRepositorio [label="{CapturaRepositorio|+ arquivo = \"capturas.json\"\l|+ inserir/listar/buscar_por_id\l+ atualizar/excluir\l+ listar_por_treinador(treinador_id): list\l}"];
+
+        RepositorioBase -> UsuarioRepositorio [arrowhead=empty, label="herda"];
+        RepositorioBase -> TipoRepositorio [arrowhead=empty, label="herda"];
+        RepositorioBase -> HabitatRepositorio [arrowhead=empty, label="herda"];
+        RepositorioBase -> RegiaoRepositorio [arrowhead=empty, label="herda"];
+        RepositorioBase -> PokemonRepositorio [arrowhead=empty, label="herda"];
+        RepositorioBase -> CapturaRepositorio [arrowhead=empty, label="herda"];
+    }
+
+    UsuarioRepositorio -> Usuario [style=dotted, arrowhead=vee, label="persiste"];
+    TipoRepositorio -> Tipo [style=dotted, arrowhead=vee, label="persiste"];
+    HabitatRepositorio -> Habitat [style=dotted, arrowhead=vee, label="persiste"];
+    RegiaoRepositorio -> Regiao [style=dotted, arrowhead=vee, label="persiste"];
+    PokemonRepositorio -> Pokemon [style=dotted, arrowhead=vee, label="persiste"];
+    CapturaRepositorio -> Captura [style=dotted, arrowhead=vee, label="persiste"];
+}
