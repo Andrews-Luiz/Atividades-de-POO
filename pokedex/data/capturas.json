@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "id": 1,
+    "pokemon_id": 4,
+    "treinador_id": 2,
+    "apelido": "Pikachu",
+    "data_captura": "2026-07-14",
+    "data_libertacao": null,
+    "status": "ATIVO"
+  }
+]
