@@ -1,0 +1,66 @@
+digraph OperacoesViewService {
+    rankdir=TB;
+    fontname="Arial";
+    labelloc="t";
+    label="Diagrama de Classes de Operações (View/Service) - Sistema de Gerenciamento Pokémon";
+    fontsize=15;
+    bgcolor="white";
+    nodesep=0.45;
+    ranksep=0.55;
+
+    node [shape=record, fontname="Arial", fontsize=9, style="filled", fillcolor="white", color="black", penwidth=1.0];
+    edge [fontname="Arial", fontsize=8, color="black", penwidth=1.0];
+
+    subgraph cluster_view {
+        label="Camada View (Template)";
+        fontname="Arial";
+        fontsize=11;
+        style="dashed";
+        color="black";
+        labeljust="l";
+
+        {rank=same; TelaLogin; MenuAdministrador; MenuTreinador;}
+        TelaLogin [label="{TelaLogin}"];
+        MenuAdministrador [label="{MenuAdministrador}"];
+        MenuTreinador [label="{MenuTreinador}"];
+    }
+
+    subgraph cluster_service {
+        label="Camada Service (Operações)";
+        fontname="Arial";
+        fontsize=11;
+        style="dashed";
+        color="black";
+        labeljust="l";
+
+        {rank=same; UsuarioService; TipoService; HabitatService;}
+        {rank=same; RegiaoService; PokemonService; CapturaService;}
+
+        UsuarioService [label="{UsuarioService|- repositorio : UsuarioRepositorio\l|+ cadastrar(nome, email,\l  senha, perfil : String) : Usuario\l+ listar() : List\<Usuario\>\l+ buscarPorId(id : int) : Usuario\l+ atualizar(usuario : Usuario) : boolean\l+ excluir(id : int) : boolean\l+ pesquisarPorNome(termo : String)\l  : List\<Usuario\>\l+ autenticar(email, senha : String)\l  : Usuario\l}"];
+
+        TipoService [label="{TipoService|- repositorio : TipoRepositorio\l|+ cadastrar(nome, descricao : String)\l  : Tipo\l+ listar() : List\<Tipo\>\l+ buscarPorId(id : int) : Tipo\l+ atualizar(tipo : Tipo) : boolean\l+ excluir(id : int) : boolean\l+ pesquisarPorNome(termo : String)\l  : List\<Tipo\>\l}"];
+
+        HabitatService [label="{HabitatService|- repositorio : HabitatRepositorio\l|+ cadastrar(nome, descricao : String)\l  : Habitat\l+ listar() : List\<Habitat\>\l+ buscarPorId(id : int) : Habitat\l+ atualizar(habitat : Habitat) : boolean\l+ excluir(id : int) : boolean\l+ pesquisarPorNome(termo : String)\l  : List\<Habitat\>\l}"];
+
+        RegiaoService [label="{RegiaoService|- repositorio : RegiaoRepositorio\l|+ cadastrar(nome, descricao : String)\l  : Regiao\l+ listar() : List\<Regiao\>\l+ buscarPorId(id : int) : Regiao\l+ atualizar(regiao : Regiao) : boolean\l+ excluir(id : int) : boolean\l+ pesquisarPorNome(termo : String)\l  : List\<Regiao\>\l}"];
+
+        PokemonService [label="{PokemonService|- repositorio : PokemonRepositorio\l- repositorioTipo : TipoRepositorio\l- repositorioHabitat : HabitatRepositorio\l- repositorioRegiao : RegiaoRepositorio\l|+ cadastrar(nome : String,\l  numeroPokedex, tipoId, habitatId,\l  regiaoId, hpBase, qtdAvistados : int)\l  : Pokemon\l+ vincularTipo(pokemonId, tipoId : int)\l  : Pokemon\l+ vincularHabitat(pokemonId,\l  habitatId : int) : Pokemon\l+ vincularRegiao(pokemonId,\l  regiaoId : int) : Pokemon\l+ listar() : List\<Pokemon\>\l+ buscarPorId(id : int) : Pokemon\l+ atualizar(pokemon : Pokemon) : boolean\l+ excluir(id : int) : boolean\l+ pesquisarPorNome(termo : String)\l  : List\<Pokemon\>\l}"];
+
+        CapturaService [label="{CapturaService|- repositorio : CapturaRepositorio\l- repositorioPokemon : PokemonRepositorio\l- repositorioUsuario : UsuarioRepositorio\l|+ capturarPokemon(pokemonId,\l  treinadorId : int, apelido : String)\l  : Captura\l+ libertarPokemon(capturaId : int)\l  : Captura\l+ listar() : List\<Captura\>\l+ listarPorTreinador(treinadorId : int)\l  : List\<Captura\>\l+ buscarPorId(id : int) : Captura\l+ atualizar(captura : Captura) : boolean\l+ excluir(id : int) : boolean\l}"];
+
+        UsuarioService -> RegiaoService [style=invis];
+        TipoService -> PokemonService [style=invis];
+        HabitatService -> CapturaService [style=invis];
+    }
+
+    edge [style="dashed", arrowhead="open", label="«usa»", fontsize=8];
+    TelaLogin -> UsuarioService;
+    MenuAdministrador -> TipoService;
+    MenuAdministrador -> HabitatService;
+    MenuAdministrador -> UsuarioService;
+    MenuAdministrador -> RegiaoService [constraint=false];
+    MenuAdministrador -> PokemonService [constraint=false];
+    MenuAdministrador -> CapturaService [constraint=false];
+    MenuTreinador -> PokemonService [constraint=false];
+    MenuTreinador -> CapturaService [constraint=false];
+}

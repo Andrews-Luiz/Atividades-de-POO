@@ -23,8 +23,8 @@ def menu_administrador(usuario_logado):
         print("5 - Gerenciar Usuários")
         print("6 - Vincular Pokémon a Tipo / Habitat / Região")
         print("7 - Pesquisar Pokémon por nome")
-        print("8 - Listar todas as Capturas")
-        print("9 - Registrar Libertação de Pokémon")
+        print("8 - Gerenciar Capturas (listar / atualizar apelido / excluir)")
+        print("9 - Registrar Libertação de Pokémon (regra de negócio)")
         print("0 - Sair")
         opcao = input("Escolha uma opção: ").strip()
 
@@ -43,8 +43,7 @@ def menu_administrador(usuario_logado):
         elif opcao == "7":
             _pesquisar_pokemon(pokemon_service)
         elif opcao == "8":
-            for c in captura_service.listar():
-                print(c)
+            _menu_capturas(captura_service)
         elif opcao == "9":
             _libertar_pokemon(captura_service)
         elif opcao == "0":
@@ -218,6 +217,31 @@ def _pesquisar_pokemon(pokemon_service):
     termo = input("Nome (parcial): ")
     for p in pokemon_service.pesquisar_por_nome(termo):
         print(p)
+
+
+def _menu_capturas(captura_service):
+    print("\n-- Capturas --")
+    print("1-Listar todas 2-Atualizar apelido 3-Excluir 4-Listar por treinador")
+    op = input("Opção: ").strip()
+    if op == "1":
+        for c in captura_service.listar():
+            print(c)
+    elif op == "2":
+        id = int(input("ID da captura: "))
+        c = captura_service.buscar_por_id(id)
+        if c:
+            c.apelido = input(f"Novo apelido ({c.apelido}): ") or c.apelido
+            captura_service.atualizar(c)
+            print("Atualizado!")
+        else:
+            print("Não encontrado.")
+    elif op == "3":
+        id = int(input("ID da captura: "))
+        print("Excluído!" if captura_service.excluir(id) else "Não encontrado.")
+    elif op == "4":
+        treinador_id = int(input("ID do treinador: "))
+        for c in captura_service.listar_por_treinador(treinador_id):
+            print(c)
 
 
 def _libertar_pokemon(captura_service):

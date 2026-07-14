@@ -1,30 +1,38 @@
 digraph CasosDeUso {
     rankdir=LR;
-    fontname="Helvetica";
+    fontname="Arial";
     labelloc="t";
     label="Diagrama de Casos de Uso - Sistema de Gerenciamento Pokémon";
-    fontsize=18;
+    fontsize=16;
+    bgcolor="white";
 
-    node [fontname="Helvetica"];
+    node [fontname="Arial"];
+    edge [fontname="Arial", fontsize=9, color="black", arrowhead=none, penwidth=1.0];
 
-    Admin2 [shape=none, label=<
-      <TABLE BORDER="0" CELLBORDER="0">
-        <TR><TD><FONT POINT-SIZE="28">&#9787;</FONT></TD></TR>
-        <TR><TD>Administrador</TD></TR>
+    Admin2 [shape=none, margin=0, label=<
+      <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+        <TR><TD><IMG SRC="actor.png" SCALE="TRUE"/></TD></TR>
+        <TR><TD><FONT POINT-SIZE="11">Administrador</FONT></TD></TR>
       </TABLE>
     >];
-    Treinador2 [shape=none, label=<
-      <TABLE BORDER="0" CELLBORDER="0">
-        <TR><TD><FONT POINT-SIZE="28">&#9787;</FONT></TD></TR>
-        <TR><TD>Treinador</TD></TR>
+    Treinador2 [shape=none, margin=0, label=<
+      <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+        <TR><TD><IMG SRC="actor.png" SCALE="TRUE"/></TD></TR>
+        <TR><TD><FONT POINT-SIZE="11">Treinador</FONT></TD></TR>
       </TABLE>
     >];
 
     subgraph cluster_sistema {
         label="Sistema de Gerenciamento Pokémon";
-        style=rounded;
-        fontsize=14;
-        node [shape=ellipse, style=filled, fillcolor="#EAF2FB", fontsize=11, width=2.3];
+        fontname="Arial";
+        fontsize=12;
+        style="solid";
+        color="black";
+        penwidth=1.0;
+        labeljust="l";
+
+        node [shape=ellipse, style="filled", fillcolor="white", color="black",
+              penwidth=1.0, fontname="Arial", fontsize=10, width=2.3, height=0.55];
 
         UC_Login [label="Entrar no sistema"];
         UC_Logout [label="Sair do sistema"];

@@ -161,6 +161,18 @@ class TestPersistenciaCaptura(unittest.TestCase):
         self.assertEqual(len(capturas), 1)
         self.assertEqual(capturas[0].status, Captura.STATUS_ATIVO)
 
+    def test_atualizar_e_excluir_captura(self):
+        captura = self.repo.inserir(Captura(pokemon_id=1, treinador_id=1, apelido="Pika",
+                                             data_captura="2026-07-01"))
+        captura.apelido = "PikaBolt"
+        self.assertTrue(self.repo.atualizar(captura))
+
+        recarregada = self.repo.buscar_por_id(captura.id)
+        self.assertEqual(recarregada.apelido, "PikaBolt")
+
+        self.assertTrue(self.repo.excluir(captura.id))
+        self.assertIsNone(self.repo.buscar_por_id(captura.id))
+
 
 class TestRegraDeNegocioCaptura(unittest.TestCase):
     """

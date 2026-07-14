@@ -1,0 +1,26 @@
+digraph InterfaceUsuario {
+    rankdir=TB;
+    fontname="Arial";
+    labelloc="t";
+    label="Diagrama de Classe da Interface com o Usuário - Sistema de Gerenciamento Pokémon";
+    fontsize=15;
+    bgcolor="white";
+    nodesep=0.6;
+    ranksep=0.7;
+
+    node [shape=record, fontname="Arial", fontsize=10, style="filled", fillcolor="white", color="black", penwidth=1.0];
+    edge [fontname="Arial", fontsize=9, color="black", penwidth=1.0];
+
+    TelaLogin [label="{TelaLogin|- usuarioService : UsuarioService\l|+ exibir() : void\l+ autenticar(email : String, senha : String) : Usuario\l}"];
+
+    MenuAdministrador [label="{MenuAdministrador|- tipoService : TipoService\l- habitatService : HabitatService\l- regiaoService : RegiaoService\l- pokemonService : PokemonService\l- usuarioService : UsuarioService\l- capturaService : CapturaService\l|+ exibir(usuarioLogado : Usuario) : void\l+ gerenciarTipos() : void\l+ gerenciarHabitats() : void\l+ gerenciarRegioes() : void\l+ gerenciarPokemons() : void\l+ gerenciarUsuarios() : void\l+ vincularPokemon() : void\l+ pesquisarPokemon() : void\l+ gerenciarCapturas() : void\l+ registrarLibertacao() : void\l}"];
+
+    MenuTreinador [label="{MenuTreinador|- pokemonService : PokemonService\l- capturaService : CapturaService\l|+ exibir(usuarioLogado : Usuario) : void\l+ pesquisarPokemon() : void\l+ capturarPokemon() : void\l+ verMinhaEquipe() : void\l}"];
+
+    Usuario [label="{Usuario|+ perfil : String\l|}", fillcolor="#F2F2F2"];
+
+    edge [style="dashed", arrowhead="open"];
+    TelaLogin -> MenuAdministrador [label="«direciona se perfil = admin»"];
+    TelaLogin -> MenuTreinador [label="«direciona se perfil = treinador»"];
+    TelaLogin -> Usuario [label="«autentica e retorna»"];
+}

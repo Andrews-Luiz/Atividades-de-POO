@@ -81,5 +81,8 @@ class CapturaService:
     def buscar_por_id(self, id):
         return self.repositorio.buscar_por_id(id)
 
+    def atualizar(self, captura):
+        return self.repositorio.atualizar(captura)
+
     def excluir(self, id):
         return self.repositorio.excluir(id)
