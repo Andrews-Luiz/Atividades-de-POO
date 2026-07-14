@@ -10,12 +10,12 @@ de cadastrar.
 
 Execução: python3 seed_dados.py
 """
-from pokedex.service.usuario_service import UsuarioService
-from pokedex.service.tipo_service import TipoService
-from pokedex.service.habitat_service import HabitatService
-from pokedex.service.regiao_service import RegiaoService
-from pokedex.service.pokemon_service import PokemonService
-from pokedex.model.usuario import Usuario
+from service.usuario_service import UsuarioService
+from service.tipo_service import TipoService
+from service.habitat_service import HabitatService
+from service.regiao_service import RegiaoService
+from service.pokemon_service import PokemonService
+from model.usuario import Usuario
 
 usuario_service = UsuarioService()
 tipo_service = TipoService()

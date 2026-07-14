@@ -1,9 +1,9 @@
 from datetime import datetime
 
-from pokedex.model.captura import Captura
-from pokedex.persistence.captura_repositorio import CapturaRepositorio
-from pokedex.persistence.pokemon_repositorio import PokemonRepositorio
-from pokedex.persistence.usuario_repositorio import UsuarioRepositorio
+from model.captura import Captura
+from persistence.captura_repositorio import CapturaRepositorio
+from persistence.pokemon_repositorio import PokemonRepositorio
+from persistence.usuario_repositorio import UsuarioRepositorio
 
 
 class CapturaService:

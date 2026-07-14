@@ -1,5 +1,5 @@
-from pokedex.model.habitat import Habitat
-from pokedex.persistence.habitat_repositorio import HabitatRepositorio
+from model.habitat import Habitat
+from persistence.habitat_repositorio import HabitatRepositorio
 
 
 class HabitatService:

@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "nome": "Bulbasaur",
+    "numero_pokedex": 1,
+    "tipo_id": 1,
+    "habitat_id": 1,
+    "regiao_id": 1,
+    "hp_base": 45,
+    "qtd_avistados": 4,
+    "qtd_disponivel": 4
+  },
+  {
+    "id": 2,
+    "nome": "Charmander",
+    "numero_pokedex": 4,
+    "tipo_id": 2,
+    "habitat_id": 2,
+    "regiao_id": 1,
+    "hp_base": 39,
+    "qtd_avistados": 3,
+    "qtd_disponivel": 3
+  },
+  {
+    "id": 3,
+    "nome": "Squirtle",
+    "numero_pokedex": 7,
+    "tipo_id": 3,
+    "habitat_id": 3,
+    "regiao_id": 1,
+    "hp_base": 44,
+    "qtd_avistados": 3,
+    "qtd_disponivel": 3
+  },
+  {
+    "id": 4,
+    "nome": "Pikachu",
+    "numero_pokedex": 25,
+    "tipo_id": 4,
+    "habitat_id": 1,
+    "regiao_id": 1,
+    "hp_base": 35,
+    "qtd_avistados": 5,
+    "qtd_disponivel": 5
+  },
+  {
+    "id": 5,
+    "nome": "Jigglypuff",
+    "numero_pokedex": 39,
+    "tipo_id": 5,
+    "habitat_id": 1,
+    "regiao_id": 1,
+    "hp_base": 115,
+    "qtd_avistados": 4,
+    "qtd_disponivel": 4
+  },
+  {
+    "id": 6,
+    "nome": "Meowth",
+    "numero_pokedex": 52,
+    "tipo_id": 5,
+    "habitat_id": 4,
+    "regiao_id": 1,
+    "hp_base": 40,
+    "qtd_avistados": 6,
+    "qtd_disponivel": 6
+  },
+  {
+    "id": 7,
+    "nome": "Psyduck",
+    "numero_pokedex": 54,
+    "tipo_id": 3,
+    "habitat_id": 3,
+    "regiao_id": 1,
+    "hp_base": 50,
+    "qtd_avistados": 4,
+    "qtd_disponivel": 4
+  },
+  {
+    "id": 8,
+    "nome": "Growlithe",
+    "numero_pokedex": 58,
+    "tipo_id": 2,
+    "habitat_id": 2,
+    "regiao_id": 1,
+    "hp_base": 55,
+    "qtd_avistados": 2,
+    "qtd_disponivel": 2
+  },
+  {
+    "id": 9,
+    "nome": "Abra",
+    "numero_pokedex": 63,
+    "tipo_id": 6,
+    "habitat_id": 4,
+    "regiao_id": 1,
+    "hp_base": 25,
+    "qtd_avistados": 3,
+    "qtd_disponivel": 3
+  },
+  {
+    "id": 10,
+    "nome": "Gastly",
+    "numero_pokedex": 92,
+    "tipo_id": 7,
+    "habitat_id": 5,
+    "regiao_id": 1,
+    "hp_base": 30,
+    "qtd_avistados": 2,
+    "qtd_disponivel": 2
+  }
+]

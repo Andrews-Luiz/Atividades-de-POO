@@ -1,5 +1,5 @@
-from pokedex.service.pokemon_service import PokemonService
-from pokedex.service.captura_service import CapturaService
+from service.pokemon_service import PokemonService
+from service.captura_service import CapturaService
 
 
 def menu_treinador(usuario_logado):

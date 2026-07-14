@@ -1,5 +1,5 @@
-from pokedex.model.regiao import Regiao
-from pokedex.persistence.regiao_repositorio import RegiaoRepositorio
+from model.regiao import Regiao
+from persistence.regiao_repositorio import RegiaoRepositorio
 
 
 class RegiaoService:

@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "nome": "Kanto",
+    "descricao": "Primeira região explorada pelos treinadores"
+  },
+  {
+    "id": 2,
+    "nome": "Johto",
+    "descricao": "Região vizinha a Kanto"
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "nome": "Floresta",
+    "descricao": "Áreas com muita vegetação"
+  },
+  {
+    "id": 2,
+    "nome": "Montanha",
+    "descricao": "Regiões rochosas e elevadas"
+  },
+  {
+    "id": 3,
+    "nome": "Oceano",
+    "descricao": "Áreas aquáticas profundas"
+  },
+  {
+    "id": 4,
+    "nome": "Urbano",
+    "descricao": "Cidades e vilarejos"
+  },
+  {
+    "id": 5,
+    "nome": "Caverna",
+    "descricao": "Ambientes escuros e subterrâneos"
+  }
+]

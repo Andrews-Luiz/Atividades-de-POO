@@ -10,26 +10,26 @@ import os
 import shutil
 import unittest
 
-from pokedex.model.usuario import Usuario
-from pokedex.model.tipo import Tipo
-from pokedex.model.habitat import Habitat
-from pokedex.model.regiao import Regiao
-from pokedex.model.pokemon import Pokemon
-from pokedex.model.captura import Captura
+from model.usuario import Usuario
+from model.tipo import Tipo
+from model.habitat import Habitat
+from model.regiao import Regiao
+from model.pokemon import Pokemon
+from model.captura import Captura
 
-from pokedex.persistence.usuario_repositorio import UsuarioRepositorio
-from pokedex.persistence.tipo_repositorio import TipoRepositorio
-from pokedex.persistence.habitat_repositorio import HabitatRepositorio
-from pokedex.persistence.regiao_repositorio import RegiaoRepositorio
-from pokedex.persistence.pokemon_repositorio import PokemonRepositorio
-from pokedex.persistence.captura_repositorio import CapturaRepositorio
+from persistence.usuario_repositorio import UsuarioRepositorio
+from persistence.tipo_repositorio import TipoRepositorio
+from persistence.habitat_repositorio import HabitatRepositorio
+from persistence.regiao_repositorio import RegiaoRepositorio
+from persistence.pokemon_repositorio import PokemonRepositorio
+from persistence.captura_repositorio import CapturaRepositorio
 
-from pokedex.service.captura_service import CapturaService
-from pokedex.service.pokemon_service import PokemonService
-from pokedex.service.usuario_service import UsuarioService
-from pokedex.service.tipo_service import TipoService
-from pokedex.service.habitat_service import HabitatService
-from pokedex.service.regiao_service import RegiaoService
+from service.captura_service import CapturaService
+from service.pokemon_service import PokemonService
+from service.usuario_service import UsuarioService
+from service.tipo_service import TipoService
+from service.habitat_service import HabitatService
+from service.regiao_service import RegiaoService
 
 PASTA_TESTE = "data_teste"
 

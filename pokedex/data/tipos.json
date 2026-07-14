@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "nome": "Grama",
+    "descricao": "Forte contra Água, fraco contra Fogo"
+  },
+  {
+    "id": 2,
+    "nome": "Fogo",
+    "descricao": "Forte contra Grama, fraco contra Água"
+  },
+  {
+    "id": 3,
+    "nome": "Água",
+    "descricao": "Forte contra Fogo, fraco contra Elétrico"
+  },
+  {
+    "id": 4,
+    "nome": "Elétrico",
+    "descricao": "Forte contra Água, fraco contra Terra"
+  },
+  {
+    "id": 5,
+    "nome": "Normal",
+    "descricao": "Não possui vantagens ou fraquezas de tipo marcantes"
+  },
+  {
+    "id": 6,
+    "nome": "Psíquico",
+    "descricao": "Forte contra Lutador e Venenoso"
+  },
+  {
+    "id": 7,
+    "nome": "Fantasma",
+    "descricao": "Forte contra Psíquico, imune a golpes Normais"
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "nome": "Admin Geral",
+    "email": "admin@pokemanager.com",
+    "senha": "admin123",
+    "perfil": "admin"
+  },
+  {
+    "id": 2,
+    "nome": "Ash Treinador",
+    "email": "ash@pokemanager.com",
+    "senha": "treinador123",
+    "perfil": "treinador"
+  }
+]

@@ -1,5 +1,5 @@
-from pokedex.model.usuario import Usuario
-from pokedex.persistence.repositorio_base import RepositorioBase
+from model.usuario import Usuario
+from persistence.repositorio_base import RepositorioBase
 
 
 class UsuarioRepositorio(RepositorioBase):
