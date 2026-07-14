@@ -1,9 +1,9 @@
-from service.tipo_service import TipoService
-from service.habitat_service import HabitatService
-from service.regiao_service import RegiaoService
-from service.pokemon_service import PokemonService
-from service.usuario_service import UsuarioService
-from service.captura_service import CapturaService
+from pokedex.service.tipo_service import TipoService
+from pokedex.service.habitat_service import HabitatService
+from pokedex.service.regiao_service import RegiaoService
+from pokedex.service.pokemon_service import PokemonService
+from pokedex.service.usuario_service import UsuarioService
+from pokedex.service.captura_service import CapturaService
 
 
 def menu_administrador(usuario_logado):

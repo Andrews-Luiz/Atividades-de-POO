@@ -1,14 +1,14 @@
-from model.tipo import Tipo
-from persistence.tipo_repositorio import TipoRepositorio
+from pokedex.model.regiao import Regiao
+from pokedex.persistence.regiao_repositorio import RegiaoRepositorio
 
 
-class TipoService:
+class RegiaoService:
     def __init__(self):
-        self.repositorio = TipoRepositorio()
+        self.repositorio = RegiaoRepositorio()
 
     def cadastrar(self, nome, descricao=""):
-        tipo = Tipo(nome=nome, descricao=descricao)
-        return self.repositorio.inserir(tipo)
+        regiao = Regiao(nome=nome, descricao=descricao)
+        return self.repositorio.inserir(regiao)
 
     def listar(self):
         return self.repositorio.listar()
@@ -16,8 +16,8 @@ class TipoService:
     def buscar_por_id(self, id):
         return self.repositorio.buscar_por_id(id)
 
-    def atualizar(self, tipo):
-        return self.repositorio.atualizar(tipo)
+    def atualizar(self, regiao):
+        return self.repositorio.atualizar(regiao)
 
     def excluir(self, id):
         return self.repositorio.excluir(id)

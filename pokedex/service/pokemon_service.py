@@ -1,8 +1,8 @@
-from model.pokemon import Pokemon
-from persistence.pokemon_repositorio import PokemonRepositorio
-from persistence.tipo_repositorio import TipoRepositorio
-from persistence.habitat_repositorio import HabitatRepositorio
-from persistence.regiao_repositorio import RegiaoRepositorio
+from pokedex.model.pokemon import Pokemon
+from pokedex.persistence.pokemon_repositorio import PokemonRepositorio
+from pokedex.persistence.tipo_repositorio import TipoRepositorio
+from pokedex.persistence.habitat_repositorio import HabitatRepositorio
+from pokedex.persistence.regiao_repositorio import RegiaoRepositorio
 
 
 class PokemonService:

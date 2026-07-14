@@ -1,7 +1,7 @@
-from service.usuario_service import UsuarioService
-from model.usuario import Usuario
-from view.menu_administrador import menu_administrador
-from view.menu_treinador import menu_treinador
+from pokedex.service.usuario_service import UsuarioService
+from pokedex.model.usuario import Usuario
+from pokedex.view.menu_administrador import menu_administrador
+from pokedex.view.menu_treinador import menu_treinador
 
 
 def tela_login():

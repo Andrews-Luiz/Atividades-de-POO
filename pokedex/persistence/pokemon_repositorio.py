@@ -1,5 +1,5 @@
-from model.pokemon import Pokemon
-from persistence.repositorio_base import RepositorioBase
+from pokedex.model.pokemon import Pokemon
+from pokedex.persistence.repositorio_base import RepositorioBase
 
 
 class PokemonRepositorio(RepositorioBase):

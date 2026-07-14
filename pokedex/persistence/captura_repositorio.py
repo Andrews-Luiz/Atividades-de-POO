@@ -1,5 +1,5 @@
-from model.captura import Captura
-from persistence.repositorio_base import RepositorioBase
+from pokedex.model.captura import Captura
+from pokedex.persistence.repositorio_base import RepositorioBase
 
 
 class CapturaRepositorio(RepositorioBase):

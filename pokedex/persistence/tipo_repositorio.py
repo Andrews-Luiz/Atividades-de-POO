@@ -1,5 +1,5 @@
-from model.tipo import Tipo
-from persistence.repositorio_base import RepositorioBase
+from pokedex.model.tipo import Tipo
+from pokedex.persistence.repositorio_base import RepositorioBase
 
 
 class TipoRepositorio(RepositorioBase):
